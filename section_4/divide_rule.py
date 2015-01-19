@@ -60,3 +60,17 @@ def find_max_subarry(A, low, high):
 
         else:
             return cross_low, cross_high, cross_sum
+
+
+def problem_4_1_1():
+    """
+    Что Возвращает процедура find_max_subarry, когда все элементы A отрицательны
+    :return:
+    """
+
+    list = [-12, -34, -2]
+    # возвращает самы малый по модулю элемент
+    return find_max_subarry(list, 0, len(list))
+
+
+
