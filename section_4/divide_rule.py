@@ -36,5 +36,27 @@ def find_max_crossing_subarray(A, low, mid, high):
             max_right = j
 
     return max_left, max_right, left_sum+right_sum
-#kixbox.ru
 
+
+def find_max_subarry(A, low, high):
+    if high-1 == low:
+         return low, high, A[low]
+    else:
+        mid = (high + low)//2
+        print mid
+        left_low, left_high, left_sum = find_max_subarry(A, low, mid)
+        print left_low, left_high, left_sum
+
+        right_low, right_high, right_sum = find_max_subarry(A, mid, high)
+        print right_low, right_high, right_sum
+        cross_low, cross_high, cross_sum = find_max_crossing_subarray(A, low, mid, high)
+        print cross_low, cross_high, cross_sum
+
+        if left_sum >= right_sum and left_sum >= cross_sum:
+            return left_low, left_high, left_sum
+
+        elif right_sum >= left_sum and right_sum >= cross_sum:
+            return right_low, right_high, right_sum
+
+        else:
+            return cross_low, cross_high, cross_sum
